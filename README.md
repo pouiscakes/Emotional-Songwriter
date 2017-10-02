@@ -1,2 +1,2 @@
-# Emotional-Songwriter-with-Machine-Learning
+# Emotional-Songwriter
 Senior Design project
