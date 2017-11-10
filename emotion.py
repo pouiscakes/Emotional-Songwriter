@@ -3,7 +3,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import indicoio
 import operator
+<<<<<<< HEAD
 indicoio.config.api_key = 'a816b53c9820893345ae9fe2570d5fb8'
+=======
+indicoio.config.api_key = '[APIKEY]'
+>>>>>>> 069626c59387bd0cf97134693b7a1670140470a4
 
 # emotion = {u'anger': 0.15266123410000002, u'surprise': 0.10423468050000001, u'sadness': 0.6441943645, u'fear': 0.06272097680000001, u'joy': 0.0361887999}
 
