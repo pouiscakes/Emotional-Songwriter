@@ -1,6 +1,6 @@
 from nltk.corpus import wordnet as wn
 
-word = 'green'
+word = 'sad'
 print '\n\n'
 print '========== ' + word.upper() + ' ==========='
 synsets = wn.synsets(word)

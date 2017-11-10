@@ -52,6 +52,6 @@ def printing(artist, title, save, lyrics):
         pass
             
 def saving(artist, title, lyrics):
-        f = open(artist + '_' + title + '.txt', 'w')
+        f = open('song_lyrics_raw/' + artist + '_' + title + '.txt', 'w')
         f.write("\n".join(lyrics).strip())
         f.close()
