@@ -11,42 +11,47 @@ indicoio.config.api_key = 'a816b53c9820893345ae9fe2570d5fb8'
 
 # emotion = {u'anger': 0.15266123410000002, u'surprise': 0.10423468050000001, u'sadness': 0.6441943645, u'fear': 0.06272097680000001, u'joy': 0.0361887999}
 
-f = open('lyrics.txt', "r")
-line = f.readline()
-f.close()
-emotion =  indicoio.emotion(line)
+with open("merged_lyrics_unique.txt", "r") as f:
+	for line in f:
+		# line = f.readline()
+		emotion =  indicoio.emotion(line)
 
-song = line;
-print song
+		song = line;
+		print song
 
-anger = emotion.get('anger')
-surprise = emotion.get('surprise')
-sadness = emotion.get('sadness')
-fear = emotion.get('fear')
-joy = emotion.get('joy')
+		anger = emotion.get('anger')
+		surprise = emotion.get('surprise')
+		sadness = emotion.get('sadness')
+		fear = emotion.get('fear')
+		joy = emotion.get('joy')
 
-print "anger: " + str(anger)
-print "surprise: " + str(surprise)
-print "sadness: " + str(sadness)
-print "fear: " + str(fear)
-print "joy: " + str(joy)
+		print "anger: " + str(anger)
+		print "surprise: " + str(surprise)
+		print "sadness: " + str(sadness)
+		print "fear: " + str(fear)
+		print "joy: " + str(joy)
 
-print "result: " + str(max(emotion.iteritems(), key=operator.itemgetter(1))[0])
+		result = str(max(emotion.iteritems(), key=operator.itemgetter(1))[0])
+
+		print "result: " + result
+
+		with open("lyrics_" + result + ".txt", "a") as outfile:
+			outfile.write(line)
 
 
-objects = ('anger', 'surprise', 'sadness', 'fear', 'joy')
-y_pos = np.arange(len(objects))
-performance = [anger, surprise, sadness, fear, joy]
+# objects = ('anger', 'surprise', 'sadness', 'fear', 'joy')
+# y_pos = np.arange(len(objects))
+# performance = [anger, surprise, sadness, fear, joy]
  
-plt.bar(y_pos, performance, align='center', alpha=0.5)
-plt.xticks(y_pos, objects)
-plt.ylabel('Probability')
-plt.title('Emotion Analysis of ' + song)
+# plt.bar(y_pos, performance, align='center', alpha=0.5)
+# plt.xticks(y_pos, objects)
+# plt.ylabel('Probability')
+# plt.title('Emotion Analysis of ' + song)
  
-plt.show()
+# plt.show()
 
 
-print "done"
+# print "done"
 
 # # batch example
 # indicoio.emotion([
