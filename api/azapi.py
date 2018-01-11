@@ -22,6 +22,7 @@
 
 import re
 import urllib
+import os
 from bs4 import BeautifulSoup
 
 def generating(artist, title, save):
@@ -52,6 +53,11 @@ def printing(artist, title, save, lyrics):
         pass
             
 def saving(artist, title, lyrics):
-        f = open('song_lyrics_raw/' + artist + '_' + title + '.txt', 'w')
-        f.write("\n".join(lyrics).strip())
+        filename = 'song_lyrics_raw/' + artist + '_' + title + '.txt'
+        f = open(filename, 'w')
+        f.write("\n".join(lyrics).encode('utf-8').strip())
         f.close()
+
+        #remove failed lyric scrapes
+        if os.path.getsize("/Users/pouiscakes/code/senior_design/" + filename) == 0:
+            os.remove(filename)

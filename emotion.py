@@ -13,30 +13,30 @@ indicoio.config.api_key = 'a816b53c9820893345ae9fe2570d5fb8'
 
 with open("merged_lyrics_unique.txt", "r") as f:
 	for line in f:
-		# line = f.readline()
-		emotion =  indicoio.emotion(line)
+		if not line.isspace(): 
+			emotion =  indicoio.emotion(line)
 
-		song = line;
-		print song
+			song = line;
+			print song
 
-		anger = emotion.get('anger')
-		surprise = emotion.get('surprise')
-		sadness = emotion.get('sadness')
-		fear = emotion.get('fear')
-		joy = emotion.get('joy')
+			anger = emotion.get('anger')
+			surprise = emotion.get('surprise')
+			sadness = emotion.get('sadness')
+			fear = emotion.get('fear')
+			joy = emotion.get('joy')
 
-		print "anger: " + str(anger)
-		print "surprise: " + str(surprise)
-		print "sadness: " + str(sadness)
-		print "fear: " + str(fear)
-		print "joy: " + str(joy)
+			print "anger: " + str(anger)
+			print "surprise: " + str(surprise)
+			print "sadness: " + str(sadness)
+			print "fear: " + str(fear)
+			print "joy: " + str(joy)
 
-		result = str(max(emotion.iteritems(), key=operator.itemgetter(1))[0])
+			result = str(max(emotion.iteritems(), key=operator.itemgetter(1))[0])
 
-		print "result: " + result
+			print "result: " + result
 
-		with open("lyrics_" + result + ".txt", "a") as outfile:
-			outfile.write(line)
+			with open("lyrics_" + result + ".txt", "a") as outfile:
+				outfile.write(line)
 
 
 # objects = ('anger', 'surprise', 'sadness', 'fear', 'joy')

@@ -1,7 +1,7 @@
 import markovify
 
 # Get raw text as string.
-with open("merged_lyrics_unique.txt") as f:
+with open("lyrics_joy.txt") as f:
     text = f.read()
 
 # Build the model.
