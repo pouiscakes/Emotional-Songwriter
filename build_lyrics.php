@@ -22,11 +22,11 @@
 // }
 ?>
 
-<script>
+<!-- <script>
 window.alert = function(msg) {
     console.log(msg);
 }
-</script>
+</script> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,19 +40,27 @@ window.alert = function(msg) {
     <!-- <script type="text/javascript" src="js/courses_filter_search.js"></script> -->
   </head>
   <body>
-  <section>  
- <?php
-    // echo '<button style="float: right; margin-right:15px; margin-top:15px;"><a href="login.php" id="logout" > Logout '. $user_check .'</a></button>';
- ?>
-  </section>
-  	<h1> Markov Lyrics</h1>
- <?php
+  	<h1>Suggested Lyrics</h1>
+    <div class="add_course_form" id="add_course_form" >
+    <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post" >
+
+  <?php
     // echo exec('/DCNFS/users/web/pages/llin/seniordesign/seniordesign/bin/python markov.py', $output, $result);
     exec('/Users/pouiscakes/.virtualenvs/seniordesign/bin/python markov.py', $output, $result);
 
     for ($i = 0; $i < count($output); $i++) {
-      echo $output[$i] . '<br>';
+      echo '<button type="submit" onclick="alert("Hello World!")">' . $output[$i] . '</button><br>';
     }
+  ?>
+
+      Write your own: <input type="text" name="notes">
+      <button type="submit" onclick="alert('Hello World!')">Use this Lyric</button><br>
+      <button type="submit" onclick="alert('Hello World!')">Regenerate Lyrics</button><br>
+      <button type="submit" onclick="alert('Hello World!')">Finish Song</button>
+    </form>
+  </div>
+ <?php
+   
 
 
   // $ses_sql = mysqli_query($conn,"select user_type from users where username = '$login_session' ");
