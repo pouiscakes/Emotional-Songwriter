@@ -2,7 +2,7 @@ import api.azapi
 import time
 from random import randint
 
-def test():
+def scrape():
 	f = open('song_selection.txt', "r")
 	# title = f.readline()
 	# artist = f.readline()
@@ -20,5 +20,5 @@ def test():
 	f.close()
 	
 if __name__ == '__main__':
-	test()
+	scrape()
 

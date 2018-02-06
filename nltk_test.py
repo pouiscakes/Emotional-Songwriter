@@ -1,3 +1,7 @@
+'''
+Not used. Just playing with nltk to find synonyms
+'''
+
 from nltk.corpus import wordnet as wn
 
 word = 'sad'
