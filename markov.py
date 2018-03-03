@@ -5,7 +5,7 @@ eventually should be prepared ahead of time
 
 import markovify
 
-def generate_lyric(feeling):
+def generate_lyric(feeling, numberOfLines):
     with open("lyrics_" + feeling + ".txt") as f:
         text = f.read()
 
@@ -14,13 +14,13 @@ def generate_lyric(feeling):
 
     with open("generated_lyrics_" + feeling + ".txt", "a+") as w:
         # Print i randomly-generated sentences
-        for i in range(10):
+        for i in range(numberOfLines):
             lyric = text_model.make_short_sentence(140,tries=100)
             w.write(lyric + "\n")
             print(lyric)
 
 def main():
-    generate_lyric("joy")
+    generate_lyric("joy", 10)
 
 if __name__ == "__main__":
     main()

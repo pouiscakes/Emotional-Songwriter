@@ -13,7 +13,7 @@ def ending_word(line):
 def last_phone(line):
     last_word = ending_word(line)
 
-    # get the ending sound of the word
+    # get the ending phoneme of the word
     phones = pronouncing.phones_for_word(last_word)
     if phones:
         phones = phones[0]
