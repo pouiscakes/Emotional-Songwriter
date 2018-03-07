@@ -10,7 +10,7 @@ def ending_word(line):
     last_word = re.sub("[^a-zA-Z]+", "", last_word) 
     return last_word
 
-def last_phone(line):
+def last_phone(line, num_phones):
     last_word = ending_word(line)
 
     # get the ending phoneme of the word
@@ -18,13 +18,18 @@ def last_phone(line):
     if phones:
         phones = phones[0]
         phones_split = phones.split()
-        last_phone = phones_split[-1]
-        return last_phone
+        result_phones = []
+        if len(phones_split) > num_phones:
+            for i in range(1, num_phones + 1):
+                result_phones.append(phones_split[-i])
+        else:
+            result_phones.append(phones_split[-1])
+        return result_phones
     else:
         return 0
 
-
 		
+
 def rhyme(feeling):
     # word = "hair"
     # phones = pronouncing.phones_for_word(word)[0]
@@ -41,7 +46,7 @@ def rhyme(feeling):
             line1_index = 0
             for line1 in f1:
                 line1 = line1.strip('\n')
-                last_phone1 = last_phone(line1)
+                last_phone1 = last_phone(line1, 2)
                 line1_index += 1
                 line2_index = 0
 
@@ -53,9 +58,10 @@ def rhyme(feeling):
 
                         else:
                             line2 = line2.strip('\n')
-                            last_phone2 = last_phone(line2)
+                            last_phone2 = last_phone(line2, 2)
 
-                            if last_phone2 == last_phone1 and ending_word(line1) != ending_word(line2):
+                            if last_phone2 == last_phone1 and last_phone1 != 0 and ending_word(line1) != ending_word(line2):
+                                print(last_phone(line1, 2))                           
                                 print (line1)
                                 print (line2)
                                 print " "
@@ -63,6 +69,7 @@ def rhyme(feeling):
                                 break
                                 # count = count + 1
                                 # vocabulary[last_word2] += 1
+                                
             # print (count)
             # print (last_phone1)
             # print vocabulary
