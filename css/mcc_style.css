@@ -1,4 +1,8 @@
-
+/* set height of the whole page */
+html, body, .wholepage {
+    min-height: 100% !important;
+    height: 100%;
+}
 
 body{ 
     font: 14px sans-serif; 
@@ -11,6 +15,38 @@ h1{
     font-family: 'Montserrat', sans-serif;
     font-size: 24px;
     font-weight: 400; /** 300 didnt work either **/
+}
+
+.wholepage:after {
+    content: "";
+    display: table;
+    clear: both;
+    height: 100%;
+}
+
+.leftcolumn {
+    float: left;
+    width: 20%;
+    padding-top: 250px;
+    height:100%;
+    position: fixed;
+    background-color: #9fc8d0;
+    color: #323a3a;
+}
+
+.leftcolumn:hover {
+    background-color: #78b7c4;
+}
+
+.leftcolumntext {
+    width: 100%;
+    display: block;
+}
+
+.rightcolumn {
+    float: left;
+    width: 80%;
+    margin-left: 20%;
 }
 
 .heading {
@@ -48,6 +84,10 @@ h1{
     padding-bottom: 25px;
 }
 
+.lyricbox:hover {
+    background-color: #b3b2b2;
+}
+
 .secondlyricline {
     display: block;    
     padding-top: 5px; 
@@ -63,14 +103,22 @@ h1{
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    /* width: 40%;
-    margin-left: 30%;
-    margin-right: 30%; */
-    /* align-content: center; */
     margin-bottom: 10px;
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 20px;
     padding-right: 20px;
 }
+
+.button-control:hover {
+    background-color: #b3b2b2;
+}
+
+.playback {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 
