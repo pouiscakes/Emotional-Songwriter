@@ -93,6 +93,31 @@ h1{
     padding-top: 5px; 
 }
 
+input {
+    line-height: 50px;
+    padding-left: 5px;
+    width: 60%;
+}
+
+.customLyric {
+    margin-bottom: 15px;
+}
+.customLyricbox {
+    background-color: #e0e0e0;
+    border: none;
+    color: #353535;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    padding-top: 19px;
+    padding-bottom: 19px;
+}
+
+.customLyricbox:hover {
+    background-color: #b3b2b2;
+}
 
 .button-control {
     background-color: #e0e0e0;

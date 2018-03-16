@@ -5,6 +5,8 @@
   session_start(); // must start session before any HTML
 ?>
 
+
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -30,37 +32,90 @@
         <div class="add_course_form" id="add_course_form" >
         <form action="" method="post" >
 
+          <!-- set default enter button behavior -->
+          <button style="overflow: visible !important; height: 0 !important; width: 0 !important; margin: 0 !important; border: 0 !important; padding: 0 !important; display: block !important;" type="submit" name="custom"/>
+
         <?php
           $lyrics = file('lyrics/rhymed_lyrics_sadness.txt', FILE_IGNORE_NEW_LINES);
           $lyrics_size = sizeof($lyrics);
-          // echo $lyrics_size;
+
           for ($i = 0; $i < 3; $i++) {
             $offset = 3 * mt_rand(0, $lyrics_size/3 - 1);
             $line1 = $lyrics[$offset];
             $line2 = $lyrics[$offset + 1];
-            echo '<button type="submit" class="lyricbox"><div>' . $line1 . '</div><div class="secondlyricline">' . $line2 . '</div></button><br>';
+            echo '<button type="submit" class="lyricbox" name="selectedlyric" value="' . $line1 . '<br>' . $line2 . '<br>"><div>' . $line1 . '</div><div class="secondlyricline">' . $line2 . '</div></button><br>';
           }
         ?>
 
-          <!-- Write your own: <input type="text" name="notes"> -->
-          <!-- <button type="submit" onclick="alert('Hello World!')">Use this Lyric</button><br> -->
+          <!-- <div class="customLyric"> Or </div> -->
+          <div class="customLyric">
+            Write your own <input type="text" name="customLyric">
+            <button type="submit" class="customLyricbox" name="custom">Use this Lyric</button><br>
+          </div>
+
           <button type="submit" name="regenerate" class="button-control"><span class="glyphicon glyphicon-refresh"></span> &nbsp;&nbsp;Regenerate Lyrics</button><br>
           <button type="submit" name="finished" class="button-control"><span class="glyphicon glyphicon-ok"></span> &nbsp;&nbsp;Finish Song</button>
         </form>
       </div>
     </div> 
-  </body>
-</html>
+
 
 <?php
-if (isset($_POST['regenerate'])) {
-    //refresh the page
-    // header("Refresh:0");
+// user selected a lyric in build_lyrics
+if (isset($_POST['selectedlyric'])) {
+  // ensure session variables are initialized  
+  if (!isset($_SESSION['lyrics'])) { 
+    $_SESSION['lyrics'] = ""; 
+    $_SESSION['checkRepeat'] = ""; 
+  }
+
+  // prevents duplicate lyrics added caused by refreshing page
+  if ($_SESSION['checkRepeat'] != $_POST['selectedlyric']) { 
+    $_SESSION['lyrics'] = $_SESSION['lyrics'] . $_POST['selectedlyric']; // add selected lyric to the lyrics
+  }
+  $_SESSION['checkRepeat'] = $_POST['selectedlyric']; // remember the most recently added lyrics
+  
+  echo '<div class="rightcolumn">' . $_SESSION['lyrics'] . '</div>';
+
 }
+
+elseif (isset($_POST['custom'])) {
+  // ensure session variables are initialized  
+  if (!isset($_SESSION['lyrics'])) { 
+    $_SESSION['lyrics'] = ""; 
+    $_SESSION['checkRepeat'] = ""; 
+  }
+
+  // prevents duplicate lyrics added caused by refreshing page. CAVEAT here is that user can't enter duplicate custom lines back to back
+  if ($_SESSION['checkRepeat'] != $_POST['customLyric']) { 
+    if ($_POST['customLyric'] != ""){ // prevent from adding lyrics if custom lyrics are empty string
+      $_SESSION['lyrics'] = $_SESSION['lyrics'] . $_POST['customLyric'] . '<br>'; // add selected lyric to the lyrics
+    }
+  }
+  $_SESSION['checkRepeat'] = $_POST['customLyric']; // remember the most recently added lyrics
+  
+  echo '<div class="rightcolumn">' . $_SESSION['lyrics'] . '</div>';
+}
+
+// do nothing, just regenerates lyrics 
+elseif (isset($_POST['regenerate'])) {
+  // ensure session variables are initialized  
+  if (!isset($_SESSION['lyrics'])) { 
+    $_SESSION['lyrics'] = ""; 
+    $_SESSION['checkRepeat'] = ""; 
+  }
+  echo '<div class="rightcolumn">' . $_SESSION['lyrics'] . '</div>';
+}
+// redirect user to finish page
 elseif (isset($_POST['finished'])) {
     $_SESSION['finished'] = 1;
-    echo "WHATTTT";
     redirect("finish_song.php");
 }
+else {
+  unset($_SESSION['lyrics']); 
+}
 ?> 
+
+  </body>
+</html>
 

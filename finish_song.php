@@ -22,7 +22,7 @@
   </head>
   <body>
   <div class="wholepage">
-    <a style="display:block height:100%" href="http://louisrlin.com">
+    <a style="display:block height:100%" href="http://students.engr.scu.edu/~isantill/mcc/build_lyrics.php">
       <div class="leftcolumn">
         <span class="leftcolumntext">You selected:</span> 
         <img src="images/feeling_sadness.jpeg" alt="sadness">
@@ -33,15 +33,22 @@
       <div class="add_course_form" id="add_course_form" >
         <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post" >
           <?php
-            $lyrics = file('lyrics/rhymed_lyrics_sadness.txt', FILE_IGNORE_NEW_LINES);
-            $lyrics_size = sizeof($lyrics);
-            // echo $lyrics_size;
-            for ($i = 0; $i < 1; $i++) {
-              $offset = 3 * mt_rand(0, $lyrics_size/3 - 1);
-              $line1 = $lyrics[$offset];
-              $line2 = $lyrics[$offset + 1];
-              echo '<button type="submit" class="lyricbox"><div>' . $line1 . '</div><div class="secondlyricline">' . $line2 . '</div></button><br>';
+            
+            echo '<button type="submit" class="lyricbox"><div>';  
+
+            if(!isset($_SESSION['lyrics'])){
+              echo "something is wrong here";
             }
+            else {
+              $lyrics_split = explode("<br>", $_SESSION['lyrics']); // split up <br>'s inside the lyrics session variable
+              echo "<div>" . $lyrics_split[0] . "</div>";
+              for ($i = 1; $i < sizeof($lyrics_split); $i++) {
+                echo '<div class="secondlyricline">' . $lyrics_split[$i] . '</div>';
+              }
+            }
+            echo '</div></button><br>';
+            
+            
           ?>
         </form>
       <audio class="playback" controls autoplay="true">
