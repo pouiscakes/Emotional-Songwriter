@@ -67,27 +67,6 @@ h1{
       margin: auto;  
 } 
 
-.feelingButton {
-    background-color: #e0e0e0;
-    border: none;
-    color: #353535;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    cursor: pointer;
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-bottom: 15px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-.feelingButton:hover {
-    background-color: #b3b2b2;
-}
-
 .lyricbox {
     background-color: #e0e0e0;
     border: none;

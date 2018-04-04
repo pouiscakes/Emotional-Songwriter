@@ -59,22 +59,9 @@ elseif (isset($_POST['finished'])) {
     $_SESSION['finished'] = 1;
     redirect("finish_song.php");
 }
-
-elseif(!isset($_GET['data'])) {
-  unset($_SESSION['lyrics']);
+else {
+  unset($_SESSION['lyrics']); 
 }
-
-elseif(isset($_GET['data'])){
-  if(isset($_SESSION['lyrics'])){
-    unset($_GET['backToBuild']);
-    echo '<div class="rightcolumn">' . $_SESSION['lyrics'] . '</div>';
-  }
-}
-
-else{
-  unset($_SESSION['lyrics']);
-}
-
 ?> 
 
 <html lang="en">
@@ -93,11 +80,9 @@ else{
     <div class="wholepage">
       <a style="display:block height:100%" href="http://louisrlin.com">
         <div class="leftcolumn">
-          <span class="leftcolumntext">Current Feeling:</span> 
-          <?php
-          echo '<img src="images/feeling_' . $_SESSION['emotion'] . '.jpeg" alt="' . $_SESSION['emotion'] . '">';
-          ?>
-          <!-- <img src="images/feeling_sadness.jpeg" alt="sadness"> -->
+          <span class="leftcolumntext">You selected:</span> 
+          
+          <img src="images/feeling_sadness.jpeg" alt="sadness">
         </div>
       </a>
       <div class="rightcolumn">
@@ -109,8 +94,8 @@ else{
           <button style="overflow: visible !important; height: 0 !important; width: 0 !important; margin: 0 !important; border: 0 !important; padding: 0 !important; display: block !important;" type="submit" name="custom"/>
 
         <?php
-          $lyrics = file('lyrics/rhymed_lyrics_' . $_SESSION['emotion'] . '.txt', FILE_IGNORE_NEW_LINES);
-          // $lyrics = file('lyrics/rhymed_lyrics_sadness.txt', FILE_IGNORE_NEW_LINES);
+          // $lyrics = file('lyrics/rhymed_lyrics_' . $_SESSION['emotion'] . '.txt', FILE_IGNORE_NEW_LINES);
+          $lyrics = file('lyrics/rhymed_lyrics_sadness.txt', FILE_IGNORE_NEW_LINES);
           $lyrics_size = sizeof($lyrics);
 
           for ($i = 0; $i < 3; $i++) {

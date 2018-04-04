@@ -6,12 +6,6 @@
   if(!isset($_SESSION['finished'])){
     redirect("build_lyrics.php");
   }
-
-if(isset($_POST['backToBuild'])){
-  $_SESSION['backToBuild'] = 1;
-  redirect("build_lyrics.php");
-}
-
 ?>
 <html lang="en">
   <head>
@@ -28,17 +22,12 @@ if(isset($_POST['backToBuild'])){
   </head>
   <body>
   <div class="wholepage">
-      <!-- <button style="display:block height:100%" name="backToBuild"> -->
-      <a href="http://students.engr.scu.edu/~isantill/mcc/build_lyrics.php?data=backToBuild">
-        <div class="leftcolumn">
-          <span class="leftcolumntext">Current Feeling:</span> 
-          <?php
-            echo '<img src="images/feeling_' . $_SESSION['emotion'] . '.jpeg" alt="' . $_SESSION['emotion'] . '">';
-          ?>
-        </div>
-      </a>
-      <!-- </button> -->
-    </form>
+    <a style="display:block height:100%" href="build_lyrics.php">
+      <div class="leftcolumn">
+        <span class="leftcolumntext">You selected:</span> 
+        <img src="images/feeling_sadness.jpeg" alt="sadness">
+      </div>
+    </a>
     <div class="rightcolumn">
       <h1 class="heading">Finished Song</h1>
       <div class="add_course_form" id="add_course_form" >
@@ -63,10 +52,7 @@ if(isset($_POST['backToBuild'])){
           ?>
         </form>
       <audio class="playback" controls autoplay="true">
-          <?php
-            echo '<source src="music/' . $_SESSION['emotion'] . '.wav" type="audio/wav">';
-          ?>
-          <!-- <source src="music/' . $_SESSION['emotion'] . '.wav" type="audio/wav"> -->
+          <source src="music/sadProgression.wav" type="audio/wav">
       </audio>
       <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post" >
         <button type="submit" class="button-control" onclick="alert('Hello World!')">Save Song</button>

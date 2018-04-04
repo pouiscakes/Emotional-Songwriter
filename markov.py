@@ -15,7 +15,7 @@ def generate_lyric(feeling, numberOfLines):
     with open("generated_lyrics_" + feeling + ".txt", "a+") as w:
         # Print i randomly-generated sentences
         for i in range(numberOfLines):
-            lyric = text_model.make_short_sentence(140,tries=100)
+            lyric = text_model.make_short_sentence(50,tries=100) # 50 character count lines
             w.write(lyric + "\n")
             print(lyric)
 
