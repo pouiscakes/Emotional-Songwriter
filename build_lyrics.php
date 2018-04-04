@@ -91,7 +91,7 @@ else{
   </head>
   <body>
     <div class="wholepage">
-      <a style="display:block height:100%" href="http://louisrlin.com">
+      <a style="display:block height:100%" href="select_emotion.php">
         <div class="leftcolumn">
           <span class="leftcolumntext">Current Feeling:</span> 
           <?php

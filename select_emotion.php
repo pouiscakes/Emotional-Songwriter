@@ -4,6 +4,7 @@
   session_save_path("/webpages/isantill/mcc/sessions");
   session_start(); // must start session before any HTML
 
+  unset($_SESSION['lyrics']) // clear all lyrics every time you go to select emotion page
   
 ?>
 
