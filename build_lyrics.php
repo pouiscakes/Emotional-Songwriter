@@ -23,7 +23,7 @@ elseif (isset($_POST['selectedlyric'])) {
   }
   $_SESSION['checkRepeat'] = $_POST['selectedlyric']; // remember the most recently added lyrics
   
-  echo '<div class="rightcolumn">' . $_SESSION['lyrics'] . '</div>';
+  echo '<div class="rightcolumn displayLyrics">' . $_SESSION['lyrics'] . '</div>';
 
 }
 
@@ -42,7 +42,7 @@ elseif (isset($_POST['custom'])) {
   }
   $_SESSION['checkRepeat'] = $_POST['customLyric']; // remember the most recently added lyrics
   
-  echo '<div class="rightcolumn">' . $_SESSION['lyrics'] . '</div>';
+  echo '<div class="rightcolumn displayLyrics">' . $_SESSION['lyrics'] . '</div>';
 }
 
 // do nothing, just regenerates lyrics 
@@ -52,7 +52,7 @@ elseif (isset($_POST['regenerate'])) {
     $_SESSION['lyrics'] = ""; 
     $_SESSION['checkRepeat'] = ""; 
   }
-  echo '<div class="rightcolumn">' . $_SESSION['lyrics'] . '</div>';
+  echo '<div class="rightcolumn displayLyrics">' . $_SESSION['lyrics'] . '</div>';
 }
 // redirect user to finish page
 elseif (isset($_POST['finished'])) {
@@ -67,7 +67,7 @@ elseif(!isset($_GET['data'])) {
 elseif(isset($_GET['data'])){
   if(isset($_SESSION['lyrics'])){
     unset($_GET['backToBuild']);
-    echo '<div class="rightcolumn">' . $_SESSION['lyrics'] . '</div>';
+    echo '<div class="rightcolumn displayLyrics">' . $_SESSION['lyrics'] . '</div>';
   }
 }
 
@@ -88,9 +88,12 @@ else{
 
     <link href="css/mcc_style.css" rel="stylesheet" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+    <script type="text/javascript">
+    </script>
   </head>
-  <body>
-    <div class="wholepage">
+  <body onload="$('html, body').animate({ scrollTop: $(document).height() }, 1000);">
+    <div class="wholepage" id="startHere">
       <a style="display:block height:100%" href="select_emotion.php">
         <div class="leftcolumn">
           <span class="leftcolumntext">Current Feeling:</span> 
