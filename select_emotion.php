@@ -24,12 +24,13 @@
     <div class="wholepage">
       <a style="display:block height:100%" href="">
         <div class="leftcolumn">
-          <span class="leftcolumntext">Current Feeling:</span> 
+           
           <?php
           if(isset($_SESSION['emotion'])){
+            echo '<span class="leftcolumntext">Current Feeling:</span>';  
             echo '<img src="images/feeling_' . $_SESSION['emotion'] . '.jpeg" alt="' . $_SESSION['emotion'] . '">';
           }else{
-            echo 'Nothing yet!';
+            echo 'Welcome!<br><br>Select a feeling on the right to begin songwriting';
           }
           ?>
           <!-- <img src="images/feeling_sadness.jpeg" alt="sadness"> -->

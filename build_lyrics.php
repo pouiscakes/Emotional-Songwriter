@@ -96,6 +96,7 @@ else{
     <div class="wholepage" id="startHere">
       <a style="display:block height:100%" href="select_emotion.php">
         <div class="leftcolumn">
+          <span class="backButton"><span class="glyphicon glyphicon-menu-left"></span> Start Over</span>        
           <span class="leftcolumntext">Current Feeling:</span> 
           <?php
           echo '<img src="images/feeling_' . $_SESSION['emotion'] . '.jpeg" alt="' . $_SESSION['emotion'] . '">';

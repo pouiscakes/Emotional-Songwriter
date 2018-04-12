@@ -31,6 +31,7 @@ if(isset($_POST['backToBuild'])){
       <!-- <button style="display:block height:100%" name="backToBuild"> -->
       <a href="http://students.engr.scu.edu/~isantill/mcc/build_lyrics.php?data=backToBuild">
         <div class="leftcolumn">
+        <span class="backButton"><span class="glyphicon glyphicon-menu-left"></span> Continue Building Lyrics</span>        
           <span class="leftcolumntext">Current Feeling:</span> 
           <?php
             echo '<img src="images/feeling_' . $_SESSION['emotion'] . '.jpeg" alt="' . $_SESSION['emotion'] . '">';

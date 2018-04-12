@@ -38,8 +38,17 @@ h1{
     background-color: #78b7c4;
 }
 
+.backButton {
+    position:fixed; 
+    text-align:left; 
+    top:20px; 
+    left:10px; 
+    width:18%;
+}
+
 .leftcolumntext {
-    width: 100%;
+    width: 90%;
+    padding-left: 5%; 
     display: block;
 }
 
