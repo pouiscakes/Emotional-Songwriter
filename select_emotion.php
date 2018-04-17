@@ -4,7 +4,8 @@
   session_save_path("/webpages/isantill/mcc/sessions");
   session_start(); // must start session before any HTML
 
-  unset($_SESSION['lyrics']) // clear all lyrics every time you go to select emotion page
+  unset($_SESSION['lyrics']); // clear all lyrics every time you go to select emotion page
+  $_SESSION['phraseCount'] = 0; // clear phrase count
   
 ?>
 
@@ -41,20 +42,20 @@
         <div class="add_course_form" id="add_course_form" >
         <form action="build_lyrics.php" method="post" >
             
-            <button type="submit" name="selectedEmotion" class="feelingButton" value="sadness">
-                <img src="images/feeling_sadness.jpeg">
+            <button type="submit" name="selectedEmotion" class="feelingButton" value="sad">
+                <img src="images/feeling_sad.jpeg">
             </button>
-            <button type="submit" name="selectedEmotion" class="feelingButton" value="joy">
-                <img src="images/feeling_joy.jpeg">
+            <button type="submit" name="selectedEmotion" class="feelingButton" value="happy">
+                <img src="images/feeling_happy.jpeg">
             </button>
-            <button type="submit" name="selectedEmotion" class="feelingButton" value="anger">
-                <img src="images/feeling_anger.jpeg">
+            <button type="submit" name="selectedEmotion" class="feelingButton" value="mad">
+                <img src="images/feeling_mad.jpeg">
             </button>
-            <button type="submit" name="selectedEmotion" class="feelingButton" value="surprise">
-                <img src="images/feeling_surprise.jpeg">
+            <button type="submit" name="selectedEmotion" class="feelingButton" value="excited">
+                <img src="images/feeling_excited.jpeg">
             </button>
-            <button type="submit" name="selectedEmotion" class="feelingButton" value="fear">
-                <img src="images/feeling_fear.jpeg">
+            <button type="submit" name="selectedEmotion" class="feelingButton" value="frustrated">
+                <img src="images/feeling_frustrated.jpeg">
             </button>
         </form>
       </div>

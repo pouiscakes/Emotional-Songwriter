@@ -65,7 +65,11 @@ if(isset($_POST['backToBuild'])){
         </form>
       <audio class="playback" controls autoplay="true">
           <?php
-            echo '<source src="music/' . $_SESSION['emotion'] . '.wav" type="audio/wav">';
+            $phraseLim = 8;
+            if($_SESSION['phraseCount'] <= $phraseLim)
+              echo '<source src= "music/final/' . $_SESSION['emotion'] . '/' . $_SESSION['phraseCount'] . '/' . $_SESSION['emotion'] . rand(1,10) . '.mp3" type="audio/mp3">';
+            else
+              echo '<source src= "music/final/' . $_SESSION['emotion'] . '/' . $phraseLim . '/' . $_SESSION['emotion'] . rand(1,10) . '.mp3" type="audio/mp3">';
           ?>
           <!-- <source src="music/' . $_SESSION['emotion'] . '.wav" type="audio/wav"> -->
       </audio>

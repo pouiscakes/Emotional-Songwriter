@@ -20,6 +20,7 @@ elseif (isset($_POST['selectedlyric'])) {
   // prevents duplicate lyrics added caused by refreshing page
   if ($_SESSION['checkRepeat'] != $_POST['selectedlyric']) { 
     $_SESSION['lyrics'] = $_SESSION['lyrics'] . $_POST['selectedlyric']; // add selected lyric to the lyrics
+    $_SESSION['phraseCount'] ++;
   }
   $_SESSION['checkRepeat'] = $_POST['selectedlyric']; // remember the most recently added lyrics
   
@@ -32,6 +33,7 @@ elseif (isset($_POST['custom'])) {
   if (!isset($_SESSION['lyrics'])) { 
     $_SESSION['lyrics'] = ""; 
     $_SESSION['checkRepeat'] = ""; 
+    $_SESSION['phraseCount'] ++;
   }
 
   // prevents duplicate lyrics added caused by refreshing page. CAVEAT here is that user can't enter duplicate custom lines back to back
