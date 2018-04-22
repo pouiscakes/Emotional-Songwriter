@@ -73,9 +73,9 @@ if(isset($_POST['backToBuild'])){
           ?>
           <!-- <source src="music/' . $_SESSION['emotion'] . '.wav" type="audio/wav"> -->
       </audio>
-      <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post" >
+      <!-- <form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post" >
         <button type="submit" class="button-control" onclick="alert('Hello World!')">Save Song</button>
-      </form>
+      </form> -->
       </div>
     </div>
   </div>

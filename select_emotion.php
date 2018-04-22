@@ -54,9 +54,9 @@
             <button type="submit" name="selectedEmotion" class="feelingButton" value="excited">
                 <img src="images/feeling_excited.jpeg">
             </button>
-            <button type="submit" name="selectedEmotion" class="feelingButton" value="frustrated">
+            <!-- <button type="submit" name="selectedEmotion" class="feelingButton" value="frustrated">
                 <img src="images/feeling_frustrated.jpeg">
-            </button>
+            </button> -->
         </form>
       </div>
     </div> 
